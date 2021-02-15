@@ -1,5 +1,5 @@
 # kyoproRef
-Reference library for competition programming
+vlibrary for competition programming
 
 # Overview
 メモだよ～
