@@ -1,38 +1,37 @@
 /*
  * Dijkstra's algorithm
  * O( |E| log |V| )
- * tested by AtCoder Biginner Contest 035 [failed]
+ * tested by AtCoder Biginner Contest 035
  */
 import std;
 
 alias PQueue(T, alias less = "a<b") = BinaryHeap!(Array!T, less);
-struct Edge{ long to, cost; }
-struct P{ long dist, vt; }
+struct Edge{ uint to;long cost; }
+struct P{ long dist; uint vt; }
 class Dijkstra {
-	long V;
+	uint V;
 	Edge[][] G;
 	long[] d;
 
-	this(long n) {
+	this(uint n) {
 		V = n;
 		G.length = V;
 		d.length = V;
 	}
 
-	void insert_edge(long s, long t, long cost) {
+	void insert_edge(uint s, uint t, long cost) {
 		G[s] ~= Edge(t, cost);
 	}
 
-	void run(long s) {
-		d[0..$] = long.max;
+	void run(uint s) {
+		d[0..$] = 100_000_000_000;
 		d[s] = 0;
 		PQueue!(P, "a.dist>b.dist") que;
-		que.removeAny;
 		que.insert( P(0, s) );
 
 		while(!que.empty()) {
 			P p = que.removeAny;
-			long v = p.vt;
+			uint v = p.vt;
 			if(d[v]<p.dist) continue;
 			foreach(e; G[v]) {
 				if(d[e.to]>d[v]+e.cost) {
@@ -45,7 +44,8 @@ class Dijkstra {
 }
 
 void main() {
-	long N, M, T;
+	uint N, M;
+	long T;
 	inelm(N, M, T);
 	long[] A = inarr!long();
 
@@ -53,7 +53,8 @@ void main() {
 	auto gl = new Dijkstra(N);
 
 	foreach(i; 0..M) {
-		long a, b, c;
+		uint a, b;
+		long c;
 		inelm(a, b, c);
 		st.insert_edge(a-1, b-1, c);
 		gl.insert_edge(b-1, a-1, c);
