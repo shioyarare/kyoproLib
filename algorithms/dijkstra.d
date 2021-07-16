@@ -8,7 +8,8 @@ import std;
 alias PQueue(T, alias less = "a<b") = BinaryHeap!(Array!T, less);
 struct Edge{ uint to;long cost; }
 struct P{ long dist; uint vt; }
-class Dijkstra {
+class Dijkstra 
+{
 	uint V;
 	Edge[][] G;
 	long[] d;

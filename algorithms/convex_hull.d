@@ -9,7 +9,8 @@ alias Tuple!(long, long) Vec2;
 Vec2 sub(Vec2 p, Vec2 q){ return Vec2(p[0]-q[0], p[1]-q[1]); }
 long det(Vec2 p, Vec2 q){ return p[0]*q[1]-p[1]*q[0]; }
 
-Vec2[] convex_hull(Vec2[] ps){
+Vec2[] convex_hull(Vec2[] ps)
+{
 	int n = ps.length.to!int;
 	Vec2[] qs;
 

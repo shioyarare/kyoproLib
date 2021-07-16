@@ -6,24 +6,28 @@
 
 import std;
 
-class UnionFind {
+class UnionFind 
+{
 	int[] par;
 	int[] rank;
 
-	this(int n) {
+	this(int n) 
+	{
 		par.length = n;
 		rank.length = n;
 		foreach(i; 0..n) par[i] = i;
 	}
 
-	int find(int x) {
+	int find(int x) 
+	{
 		if (par[x] == x) 
 			return x;
 		else 
 			return par[x] = find(par[x]);
 	}
 
-	void unite(int x, int y) {
+	void unite(int x, int y) 
+	{
 		x = find(x);
 		y = find(y);
 		if(x==y) 
@@ -36,7 +40,8 @@ class UnionFind {
 		}
 	}
 
-	bool same(int x, int y) {
+	bool same(int x, int y) 
+	{
 		return find(x) == find(y);
 	}
 }
