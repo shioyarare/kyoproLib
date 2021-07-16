@@ -40,29 +40,3 @@ class UnionFind {
 		return find(x) == find(y);
 	}
 }
-int N, M;
-int[] P;
-void main() {
-	inelm(N, M);
-	P = inarr();
-
-	auto uft = new UnionFind(N);
-
-	foreach(i; 0..M) {
-		int x, y;
-		inelm(x, y);
-		uft.unite(x-1, y-1);
-	}
-
-	int ans;
-	foreach(i; 0..N) {
-		if(uft.same(i, P[i]-1))
-			ans++;
-	}
-	ans.writeln();
-}
-
-void inelm(L...)(ref L A) { auto l = readln.split;
-	foreach(i, T; L) A[i]=l[i].to!T; }
-
-T[] inarr(T=int)(){ return readln.split.to!(T[]); }

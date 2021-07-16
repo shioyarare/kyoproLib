@@ -42,37 +42,3 @@ class Dijkstra {
 		}
 	}
 }
-
-void main() {
-	uint N, M;
-	long T;
-	inelm(N, M, T);
-	long[] A = inarr!long();
-
-	auto st = new Dijkstra(N);
-	auto gl = new Dijkstra(N);
-
-	foreach(i; 0..M) {
-		uint a, b;
-		long c;
-		inelm(a, b, c);
-		st.insert_edge(a-1, b-1, c);
-		gl.insert_edge(b-1, a-1, c);
-	}
-
-	
-	st.run(0);
-	gl.run(0);
-
-	long ans;
-	foreach(i; 0..N) {
-		if(0>T-st.d[i] - gl.d[i]) continue;
-		long money = A[i]*(T-st.d[i]-gl.d[i]);
-		ans = max(ans, money);
-	}
-	ans.writeln;
-}
-void inelm(L...)(ref L A) { auto l = readln.split;
-	foreach(i, T; L) A[i]=l[i].to!T; }
-
-T[] inarr(T=int)(){ return readln.split.to!(T[]); }

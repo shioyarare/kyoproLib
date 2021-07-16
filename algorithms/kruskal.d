@@ -29,19 +29,6 @@ int kruskal() {
 	return ans;
 }
 
-void main() {
-	inelm(V, E);
-	foreach(i; 0..E) {
-		int s, t, w;
-		inelm(s, t, w);
-		es ~= Edge(s, t, w);
-	}
-	kruskal.writeln();
-}
-
-void inelm(L...)(ref L A) { auto l = readln.split;
-	foreach(i, T; L) A[i]=l[i].to!T; }
-
 class UnionFind {
 	int[] par;
 	int[] rank;

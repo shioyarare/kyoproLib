@@ -38,14 +38,3 @@ Vec2[] convex_hull(Vec2[] ps){
 	}
 	return qs;
 }
-
-void main(){
-	Vec2[] points;
-	foreach(i; 0..5){
-		auto input = readln.chomp.split;
-		points ~= Vec2(input[0].to!long, input[1].to!long);
-	}
-	points.sort!("a[0]==b[0]?a[1]<b[1] : a[0]<b[0]");
-	auto res = convex_hull(points);
-	writeln(res.length-1>=5? "YES" : "NO");
-}

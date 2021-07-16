@@ -15,9 +15,3 @@ void sieve(int n){
 		}
 	}
 }
-
-void main(){
-	int n = readln.chomp.to!int;
-	sieve(n);
-	prime.writeln();
-}
